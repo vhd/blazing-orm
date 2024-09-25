@@ -1,0 +1,20 @@
+{
+  "name": "vhd/blazing-orm",
+  "description": "A blazing fast ORM for PHP",
+  "type": "library",
+  "authors": [
+    {
+      "name": "vhd",
+      "email": "sudo.vhd@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "vhd\\BlazingOrm\\": "src/"
+    }
+  }
+}
