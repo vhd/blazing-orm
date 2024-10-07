@@ -10,7 +10,7 @@ class JsonObject implements JsonSerializable
 {
 
     public function __construct(
-        protected array $value = [],
+        protected mixed $value = [],
     ) {
     }
 

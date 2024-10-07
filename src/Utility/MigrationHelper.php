@@ -227,7 +227,11 @@ class MigrationHelper
                     if (isset($currentTable['fields'][$fName])) {
                         $fieldList[] = $fName;
                     } else {
-                        $fieldList[] = "''";
+                        $default = "''";
+                        if (preg_match('/ binary\((\d+)\) /', $newTable['fields'][$fName], $matches)) {
+                            $default = "x'" . str_repeat('00', (int)$matches[1]) . "'";
+                        }
+                        $fieldList[] = $default;
                     }
                 }
                 $newTableFields = implode(',', $newTableFields);

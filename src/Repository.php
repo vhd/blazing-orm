@@ -8,7 +8,6 @@ use ArrayObject;
 use Closure;
 use Exception;
 use InvalidArgumentException;
-use JetBrains\PhpStorm\ArrayShape;
 use SplObjectStorage;
 use UnexpectedValueException;
 use vhd\BlazingOrm\Engine\AbstractSQLEngine;
@@ -110,8 +109,9 @@ class Repository implements RepositoryInterface
         return $query;
     }
 
-    #[ArrayShape(['records' => 'array<T>', 'total' => '?int'])]
-    /** @return array{records: array<TRecord>, total: ?int} */
+    /**
+     * @return array{records: array<TRecord>, total: ?int}
+     */
     public function runQuery(mixed &$query): array
     {
         $total = null;

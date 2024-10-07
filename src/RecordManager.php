@@ -139,6 +139,9 @@ class RecordManager implements RecordManagerInterface
         if ($state->state === RecordState::STATE_NEW && !isset($state->key)) {
             throw new InvalidArgumentException("Unable to retrieve reference key. Record is not stored");
         }
+        if (!$state->key) {
+            return null;
+        }
         if ($binary) {
             return $state->key;
         }
