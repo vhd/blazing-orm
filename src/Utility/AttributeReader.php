@@ -87,7 +87,7 @@ class AttributeReader
                 }
             }
             if ($fieldAttribute->index) {
-                $keyName = 'By' . $fieldAttribute->name;
+                $keyName = 'by_' . $fieldAttribute->name;
                 $index = new Index(
                     name: $keyName,
                     fields: [$fieldAttribute->name],
