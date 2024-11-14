@@ -204,7 +204,7 @@ abstract class AbstractSQLEngine implements StorageEngineInterface
         } elseif ($type === 'bool') {
             $alias = self::ALIAS_BOOLEAN;
             $suffix = self::SUFFIX_BOOLEAN;
-            $unCastFn = static fn(int|null $v) => (bool)$v;
+            $unCastFn = static fn(null|int|string $v) => (bool)$v;
             $castFn = static fn(bool $v) => [$v, PDO::PARAM_BOOL];
         } elseif (is_subclass_of($type, DateTimeInterface::class)) {
             $alias = self::ALIAS_DATETIME;
