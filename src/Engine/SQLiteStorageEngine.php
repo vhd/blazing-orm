@@ -85,4 +85,11 @@ class SQLiteStorageEngine extends AbstractSQLEngine
         }
     }
 
+    public function constructQueryFilter(Field $field, string $operation, mixed $item): array
+    {
+        $result = parent::constructQueryFilter($field, $operation, $item);
+        $result['sql'] = preg_replace("/LIKE (\S+)/", "LIKE $1 ESCAPE '\\'", $result['sql']);
+        return $result;
+    }
+
 }
