@@ -18,6 +18,11 @@ class SQLiteStorageEngine extends AbstractSQLEngine
                 $column->ddl = 'varchar(255) NOT NULL';
             } elseif (str_starts_with($column->ddl, 'JSON ')) {
                 $column->ddl = 'json NOT NULL';
+            } elseif (str_starts_with($column->ddl, 'varchar(')
+                || str_starts_with($column->ddl, 'text ')
+                || str_starts_with($column->ddl, 'mediumtext ')
+            ) {
+                $column->ddl .= ' COLLATE NOCASE'; // SQLite does not support case-sensitive text comparison
             }
         }
     }
